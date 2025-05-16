@@ -1,0 +1,33 @@
+name: Build macOS App
+
+on: push
+
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+      - name: Repository auschecken
+        uses: actions/checkout@v3
+
+      - name: Python einrichten
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Abhängigkeiten installieren
+        run: |
+          python3 -m pip install --upgrade pip
+          pip install py2app
+          pip install py2app customtkinter
+
+
+      - name: App mit py2app bauen
+        run: python3 setup.py py2app
+
+      - name: App als Artefakt hochladen
+        uses: actions/upload-artifact@v4
+        with:
+          name: Gruppengenerator-app
+          path: dist/*.app
