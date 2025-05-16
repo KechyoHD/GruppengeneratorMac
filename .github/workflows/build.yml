@@ -21,7 +21,6 @@ jobs:
           python3 -m pip install --upgrade pip
           pip install py2app customtkinter
 
-
       - name: App mit py2app bauen
         run: python3 setup.py py2app
         - name: List dist folder
