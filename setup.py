@@ -3,6 +3,7 @@ from setuptools import setup
 APP = ['Gruppengenerator.py']
 DATA_FILES = ['resources/participants.csv']
 OPTIONS = {
+    'iconfile': 'icon.icns',
     'argv_emulation': True,
     'includes': ['customtkinter'],
 }
